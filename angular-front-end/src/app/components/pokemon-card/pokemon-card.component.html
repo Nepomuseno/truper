@@ -1,0 +1,15 @@
+<mat-card class="example-card" appearance="outlined">
+    @let poke = pokemon();
+    <mat-card-header>
+        <div mat-card-avatar class="example-header-image"></div>
+        <mat-card-title>{{poke.name}}</mat-card-title>
+    </mat-card-header>
+    <div class="img">
+        <img mat-card-image [src]="poke.sprite.front" [alt]="poke.name">
+        <img mat-card-image [src]="poke.sprite.back" [alt]="poke.name">
+    </div>
+    <mat-card-actions>
+        <!-- <button matButton>LIKE</button> -->
+        <button matButton>Borrar</button>
+    </mat-card-actions>
+</mat-card>

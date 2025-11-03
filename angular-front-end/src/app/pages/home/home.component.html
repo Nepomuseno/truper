@@ -1,0 +1,20 @@
+<div id="home" class="container">
+    <h1>Dashboard administrativo</h1>
+
+    <app-search-bar (searchTerm)="searchPokemon($event)"></app-search-bar>
+
+    <div class="pokemons">
+        @if (this.seachPokemon().length> 0) {
+        @for (poke of this.seachPokemon(); track $index) {
+        <app-pokemon-card [pokemon]="poke"></app-pokemon-card>
+        }
+
+        } @else {
+        @for (pokemon of pokemons(); track $index) {
+        <app-pokemon-card [pokemon]="pokemon"></app-pokemon-card>
+        }
+        }
+
+
+    </div>
+</div>
