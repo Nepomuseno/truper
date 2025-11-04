@@ -1,73 +1,88 @@
-# React + TypeScript + Vite
+# Truper Frontend Projects
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+Este repositorio contiene **dos aplicaciones frontend independientes** desarrolladas en **React** y **Angular**, respectivamente.  
+Cada una se encuentra en su propia carpeta dentro del proyecto principal.
 
-Currently, two official plugins are available:
+---
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react) uses [Babel](https://babeljs.io/) (or [oxc](https://oxc.rs) when used in [rolldown-vite](https://vite.dev/guide/rolldown)) for Fast Refresh
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
+## 📁 Estructura del proyecto
 
-## React Compiler
-
-The React Compiler is currently not compatible with SWC. See [this issue](https://github.com/vitejs/vite-plugin-react/issues/428) for tracking the progress.
-
-## Expanding the ESLint configuration
-
-If you are developing a production application, we recommend updating the configuration to enable type-aware lint rules:
-
-```js
-export default defineConfig([
-  globalIgnores(['dist']),
-  {
-    files: ['**/*.{ts,tsx}'],
-    extends: [
-      // Other configs...
-
-      // Remove tseslint.configs.recommended and replace with this
-      tseslint.configs.recommendedTypeChecked,
-      // Alternatively, use this for stricter rules
-      tseslint.configs.strictTypeChecked,
-      // Optionally, add this for stylistic rules
-      tseslint.configs.stylisticTypeChecked,
-
-      // Other configs...
-    ],
-    languageOptions: {
-      parserOptions: {
-        project: ['./tsconfig.node.json', './tsconfig.app.json'],
-        tsconfigRootDir: import.meta.dirname,
-      },
-      // other options...
-    },
-  },
-])
+```
+trueper/
+├── react-front-end/      # Proyecto en React
+└── angular-front-end/    # Proyecto en Angular
 ```
 
-You can also install [eslint-plugin-react-x](https://github.com/Rel1cx/eslint-react/tree/main/packages/plugins/eslint-plugin-react-x) and [eslint-plugin-react-dom](https://github.com/Rel1cx/eslint-react/tree/main/packages/plugins/eslint-plugin-react-dom) for React-specific lint rules:
+---
 
-```js
-// eslint.config.js
-import reactX from 'eslint-plugin-react-x'
-import reactDom from 'eslint-plugin-react-dom'
+## 🚀 Proyecto React
 
-export default defineConfig([
-  globalIgnores(['dist']),
-  {
-    files: ['**/*.{ts,tsx}'],
-    extends: [
-      // Other configs...
-      // Enable lint rules for React
-      reactX.configs['recommended-typescript'],
-      // Enable lint rules for React DOM
-      reactDom.configs.recommended,
-    ],
-    languageOptions: {
-      parserOptions: {
-        project: ['./tsconfig.node.json', './tsconfig.app.json'],
-        tsconfigRootDir: import.meta.dirname,
-      },
-      // other options...
-    },
-  },
-])
+### 📦 Instalación
+
+```bash
+cd react-front-end
+npm install
+```
+
+### ▶️ Ejecución en desarrollo
+
+```bash
+npm run dev
+```
+
+El proyecto estará disponible en:
+
+```
+http://localhost:5173
+```
+
+### 🏗️ Compilación para producción
+
+```bash
+npm run build
+```
+
+---
+
+## 🅰️ Proyecto Angular
+
+### 📦 Instalación
+
+```bash
+cd angular-front-end
+npm install -g @angular/cli
+npm install
+```
+
+### ▶️ Ejecución en desarrollo
+
+```bash
+ng serve
+```
+
+El proyecto estará disponible en:
+
+```
+http://localhost:4200
+```
+
+### 🏗️ Compilación para producción
+
+```bash
+ng build
+``
+
+---
+
+## 💡 Notas adicionales
+
+- Ambos proyectos pueden ejecutarse **simultáneamente** en diferentes puertos.
+- Asegúrate de tener **Node.js v18+** instalado.
+- Se recomienda usar **VS Code** con las extensiones:
+  - *ESLint*
+  - *Prettier - Code Formatter*
+  - *Angular Language Service*
+  - *React Developer Tools*
+
+---
 ```

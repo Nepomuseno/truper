@@ -1,0 +1,55 @@
+.pokemon-table-container {
+  background: #101820;
+  color: #f5f5f5;
+  display: flex;
+  justify-content: center;
+}
+
+.pokemon-table {
+  width: 100%;
+  max-width: 900px;
+  border-collapse: collapse;
+  border: 1px solid #333;
+  background: #1b2735;
+  border-radius: 6px;
+  overflow: hidden;
+}
+
+.pokemon-table th,
+.pokemon-table td {
+  padding: 0.8rem 1rem;
+  text-align: center;
+  border-bottom: 1px solid #333;
+}
+
+.pokemon-table thead {
+  background: #273c5a;
+  color: #fff;
+}
+
+.pokemon-table tbody tr:hover {
+  background: rgba(255, 255, 255, 0.05);
+}
+
+.poke-name {
+  font-weight: 600;
+  color: #81a1c1;
+  text-transform: capitalize;
+}
+
+.sprite {
+  max-height: 80px;
+  margin: auto;
+}
+
+/* Responsive */
+@media (max-width: 768px) {
+  .pokemon-table th,
+  .pokemon-table td {
+    padding: 0.5rem;
+    font-size: 0.85rem;
+  }
+  .sprite {
+    max-height: 60px;
+  }
+}
