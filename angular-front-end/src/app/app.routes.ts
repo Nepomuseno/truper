@@ -11,6 +11,10 @@ export const routes: Routes = [
     loadComponent: () => import("./pages/home/home.component").then((m) => m.HomeComponent),
   },
   {
+    path: "comparador/:id",
+    loadComponent: () => import("./pages/comparador/comparador.component").then((m) => m.ComparadorComponent),
+  },
+  {
     path: "**",
     redirectTo: "dashboard",
   },

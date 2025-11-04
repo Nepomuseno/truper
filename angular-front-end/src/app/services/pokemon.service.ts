@@ -41,16 +41,7 @@ export class PokemonService {
         urlBasics.map(async (url: string) => {
           const resp = this.http.get<PokemonResponse>(url);
           const pokemon = await lastValueFrom(resp);
-          const pokeData: Pokemon = {
-            id: pokemon.id,
-            name: pokemon.name,
-            weight: pokemon.weight,
-            height: pokemon.height,
-            sprite: {
-              back: pokemon.sprites.back_default || "",
-              front: pokemon.sprites.front_default || "",
-            },
-          };
+          const pokeData: Pokemon = this.buildPokemon(pokemon);
           return pokeData;
         })
       );
@@ -61,6 +52,20 @@ export class PokemonService {
       this.loading.set(false);
       localStorage.setItem("pokemons", JSON.stringify([]));
     }
+  }
+
+  private buildPokemon(pokemon: PokemonResponse): Pokemon {
+    const pokeData: Pokemon = {
+      id: pokemon.id,
+      name: pokemon.name,
+      weight: pokemon.weight,
+      height: pokemon.height,
+      sprite: {
+        back: pokemon.sprites.back_default || "",
+        front: pokemon.sprites.front_default || "",
+      },
+    };
+    return pokeData;
   }
 
   deletePokemon(id: number) {

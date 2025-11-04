@@ -1,5 +1,4 @@
 <div id="home" class="container">
-    <h1>Dashboard pokemon</h1>
 
     <app-search-bar (searchTerm)="searchPokemon($event)"></app-search-bar>
 
@@ -19,7 +18,7 @@
             }
             } @else {
             <div class="not-found">
-                <h5>No se encontro ningun pokemon con el nombre <span>{{searchTerm()}}</span></h5>
+                <h5>No se encontro ningun pokemon <span>{{searchTerm()}}</span></h5>
             </div>
             }
         </div>

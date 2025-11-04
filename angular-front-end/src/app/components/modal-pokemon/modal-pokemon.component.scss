@@ -18,7 +18,7 @@ mat-card-header {
 
 mat-card {
     max-width: 90%;
-    margin-bottom: 10px;
+    margin: 0 auto;
     border: none;
 }
 
@@ -26,4 +26,12 @@ mat-card-actions {
     display: flex;
     align-items: center;
     justify-content: end;
+}
+
+mat-list-item {
+    height: 30px !important;
+
+    span {
+        font-weight: 700;
+    }
 }
