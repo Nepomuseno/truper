@@ -1,8 +1,10 @@
 <div id="home" class="container">
 
     <div class="top-dashboard">
-        <button matButton [routerLink]="['/comparador', idComparables().join('-')]"
+        @if (isComparable()) {
+        <button matButton="filled" [routerLink]="['/comparador', idComparables().join('-')]"
             [disabled]="!isComparable()">Comparar</button>
+        }
         <app-search-bar (searchTerm)="searchPokemon($event)"></app-search-bar>
     </div>
 

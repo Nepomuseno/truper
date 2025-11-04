@@ -3,8 +3,13 @@
 
     .top-dashboard {
         display: flex;
-        justify-content: space-between;
+        justify-content: flex-end;
         align-items: center;
+
+        button {
+            margin-right: 20px;
+            margin-bottom: 15px;
+        }
     }
 
     .spinner {

@@ -38,7 +38,7 @@ export class PokemonService {
       this.loading.set(true);
       const urlBasics = await this.getAllPokemonsBasic();
       const Pokemons = await Promise.all(
-        urlBasics.slice(0, 10).map(async (url: string) => {
+        urlBasics.map(async (url: string) => {
           const resp = this.http.get<PokemonResponse>(url);
           const pokemon = await lastValueFrom(resp);
           const pokeData: Pokemon = this.buildPokemon(pokemon);
