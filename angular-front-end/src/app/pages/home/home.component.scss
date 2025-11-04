@@ -3,3 +3,25 @@ h1 {
     font-size: 30px;
     font-weight: 700;
 }
+
+.spinner {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin: 20em auto;
+    width: 40px;
+}
+
+.not-found {
+    margin: auto;
+
+    h5 {
+        margin-top: 20px;
+        font-size: 20px;
+        text-align: center;
+
+        span {
+            font-weight: 700;
+        }
+    }
+}

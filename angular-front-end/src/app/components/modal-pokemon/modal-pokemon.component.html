@@ -1,0 +1,26 @@
+<div class="container">
+    <div class="row">
+        <div class="col-12">
+            <mat-card class="example-card" appearance="outlined">
+                @let poke = pokemon();
+                <mat-card-header>
+                    <mat-card-title>{{poke.name}}</mat-card-title>
+                </mat-card-header>
+                <div class="img"><img mat-card-image [src]="poke.sprite.front" [alt]="poke.name" appNotImage
+                        [img]="'assets/not-found.png'" />
+                    <img mat-card-image [src]="poke.sprite.back" [alt]="poke.name" appNotImage
+                        [img]="'assets/not-found.png'" />
+                </div>
+
+                <mat-list>
+                    <mat-list-item><strong>Id: </strong> {{poke.id}}</mat-list-item>
+                    <mat-list-item><strong>Altura: </strong> {{poke.height}}</mat-list-item>
+                    <mat-list-item><strong>Peso: </strong> {{poke.weight}}</mat-list-item>
+                </mat-list>
+                <mat-card-actions>
+                    <button matButton [mat-dialog-close]>Cerrar</button>
+                </mat-card-actions>
+            </mat-card>
+        </div>
+    </div>
+</div>

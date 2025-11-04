@@ -1,31 +1,35 @@
-import { Component, EventEmitter, inject, Output } from "@angular/core";
-import { FormBuilder, FormGroup, ReactiveFormsModule, Validators } from "@angular/forms";
+import { MatInputModule } from "@angular/material/input";
+import { Component, EventEmitter, Output } from "@angular/core";
+import { FormsModule, ReactiveFormsModule } from "@angular/forms";
+import { MatButtonModule } from "@angular/material/button";
+import { MatIconModule } from "@angular/material/icon";
+import { debounceTime, distinctUntilChanged, Subject } from "rxjs";
 
 @Component({
   selector: "app-search-bar",
-  imports: [ReactiveFormsModule],
+  imports: [ReactiveFormsModule, MatInputModule, FormsModule, MatButtonModule, MatIconModule],
   standalone: true,
   templateUrl: "./search-bar.component.html",
   styleUrl: "./search-bar.component.scss",
 })
 export class SearchBarComponent {
-  form!: FormGroup;
-  formBuilder = inject(FormBuilder);
+  term: string = "";
   @Output() searchTerm = new EventEmitter<string>();
 
-  ngOnInit() {
-    this.buildForm();
-  }
+  private searchSubject = new Subject<string>();
 
-  private buildForm() {
-    this.form = this.formBuilder.group({
-      search: ["", Validators.required],
+  constructor() {
+    this.searchSubject.pipe(debounceTime(1000), distinctUntilChanged()).subscribe((term) => {
+      this.searchTerm.emit(term);
     });
   }
 
-  getData() {
-    if (this.form.valid) {
-      this.searchTerm.emit(this.form.value.search as string);
-    }
+  onSearchChange(value: string) {
+    this.searchSubject.next(value);
+  }
+
+  clearSearch() {
+    this.term = "";
+    this.searchSubject.next("");
   }
 }

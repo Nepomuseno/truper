@@ -1,0 +1,111 @@
+// ===========================================
+// ⚡ GRID SYSTEM estilo Ionic / Bootstrap
+// ===========================================
+@use "sass:math";
+
+// 1️⃣ Breakpoints más usados
+$breakpoints: (
+    sm: 576px,
+    md: 768px,
+    lg: 992px,
+    xl: 1200px,
+    xxl: 1400px
+);
+
+// 2️⃣ Variables base
+$columns: 12;
+$gutter: 16px;
+
+// 3️⃣ Contenedor principal
+.container {
+    width: 100%;
+    margin: 0 auto;
+    padding: 0 !important;
+    padding-inline: $gutter;
+
+    @each $name, $size in $breakpoints {
+        @media (min-width: $size) {
+            max-width: if($name ==sm, 540px,
+                    if($name ==md, 720px,
+                        if($name ==lg, 960px,
+                            if($name ==xl, 1140px, 1320px))));
+        }
+    }
+}
+
+// 4️⃣ Fila (usa flexbox para compatibilidad con Ionic)
+.row {
+    display: flex;
+    flex-wrap: wrap;
+    padding-right: calc($gutter / 4);
+    padding-left: calc($gutter / 4);
+}
+
+// 5️⃣ Columnas base
+[class*="col-"] {
+    padding-right: calc($gutter / 2);
+    padding-left: calc($gutter / 2);
+    box-sizing: border-box;
+    flex: 0 0 auto;
+}
+
+// 6️⃣ Columnas proporcionales (de 1 a 12)
+@for $i from 1 through $columns {
+    .col-#{$i} {
+        flex: 0 0 calc((#{$i} / #{$columns}) * 100%);
+        max-width: calc((#{$i} / #{$columns}) * 100%);
+    }
+}
+
+// 7️⃣ Columna automática (ocupa el espacio disponible)
+.col {
+    flex: 1 1 0;
+    max-width: 100%;
+}
+
+// 8️⃣ Responsive Columns
+@each $name, $size in $breakpoints {
+    @media (min-width: $size) {
+        @for $i from 1 through $columns {
+            .col-#{$name}-#{$i} {
+                flex: 0 0 calc((#{$i} / #{$columns}) * 100%);
+                max-width: calc((#{$i} / #{$columns}) * 100%);
+            }
+        }
+
+        .col-#{$name} {
+            flex: 1 1 0;
+            max-width: 100%;
+        }
+    }
+}
+
+// 9️⃣ Alineaciones opcionales
+.justify-center {
+    justify-content: center;
+}
+
+.justify-between {
+    justify-content: space-between;
+}
+
+.align-center {
+    align-items: center;
+}
+
+.align-start {
+    align-items: flex-start;
+}
+
+.align-end {
+    align-items: flex-end;
+}
+
+// 🔟 Ejemplo visual opcional
+.demo-box {
+    background-color: #2196f3;
+    color: white;
+    text-align: center;
+    padding: 0.75rem;
+    border-radius: 6px;
+}

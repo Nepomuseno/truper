@@ -1,7 +1,9 @@
-<form [formGroup]="form" (ngSubmit)="getData()">
-    <input formControlName="search" type="search" name="" id="" placeholder="Buscar Pokemon" debounce="1000">
-    <!-- <mat-form-field class="example-full-width">
-        <mat-label>Message</mat-label>
-        <input matInput #message maxlength="256" placeholder="Buscar pokemon">
-    </mat-form-field> -->
-</form>
+<mat-form-field class="example-form-field">
+    <mat-label>Buscar pokemon</mat-label>
+    <input matInput type="text" [(ngModel)]="term" [(ngModel)]="term" (ngModelChange)="onSearchChange($event)">
+    @if (term) {
+    <button matSuffix matIconButton aria-label="Clear" (click)="clearSearch()">
+        <mat-icon>close</mat-icon>
+    </button>
+    }
+</mat-form-field>

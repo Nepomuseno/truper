@@ -12,6 +12,7 @@ export class PokemonService {
   http = inject(HttpClient);
   api_url = "https://pokeapi.co/api/v2/pokemon?limit=100000&offset=0.";
   allPokemons = signal<Pokemon[]>([]);
+  loading = signal<boolean>(false);
 
   constructor() {
     this.getAllPokemons();
@@ -34,12 +35,12 @@ export class PokemonService {
 
   async getAllPokemons() {
     try {
+      this.loading.set(true);
       const urlBasics = await this.getAllPokemonsBasic();
       const Pokemons = await Promise.all(
         urlBasics.map(async (url: string) => {
           const resp = this.http.get<PokemonResponse>(url);
           const pokemon = await lastValueFrom(resp);
-          // console.log(pokemon);
           const pokeData: Pokemon = {
             id: pokemon.id,
             name: pokemon.name,
@@ -54,21 +55,18 @@ export class PokemonService {
         })
       );
       this.allPokemons.set(Pokemons);
+      this.loading.set(false);
       localStorage.setItem("pokemons", JSON.stringify(this.allPokemons()));
     } catch (error) {
+      this.loading.set(false);
       localStorage.setItem("pokemons", JSON.stringify([]));
     }
   }
 
-  searchPokemnon(term: string) {
+  deletePokemon(id: number) {
     const pokemons = JSON.parse(localStorage.getItem("pokemons") || "[]");
-    const seach = pokemons.filter((pokemon: Pokemon) => pokemon.name.toLowerCase().includes(term.toLowerCase()));
-    return seach;
-  }
-
-  deletePokemon(id: string) {
-    const pokemons = this.allPokemons();
-    this.allPokemons.set(pokemons.filter((pokemon: Pokemon) => pokemon.id !== +id));
+    const seach = pokemons.filter((pokemon: Pokemon) => pokemon.id !== +id);
+    this.allPokemons.set(seach);
     localStorage.setItem("pokemons", JSON.stringify(this.allPokemons()));
   }
 }
