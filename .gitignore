@@ -38,3 +38,4 @@ out/
 *.swo
 Thumbs.db
 .env
+.DS_Store
