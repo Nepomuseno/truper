@@ -1,5 +1,5 @@
-<mat-card class="example-card" appearance="outlined">
-    @let poke = pokemon();
+@let poke = pokemon();
+<mat-card class="example-card" appearance="outlined" [ngClass]="{'active': idComparables().includes(poke.id)}">
     <mat-card-header>
         <mat-card-title>{{poke.name}}</mat-card-title>
     </mat-card-header>

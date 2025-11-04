@@ -7,4 +7,5 @@ export interface Pokemon {
     back: string;
     front: string;
   };
+  moves: string[];
 }

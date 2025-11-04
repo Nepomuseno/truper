@@ -11,7 +11,7 @@ export const routes: Routes = [
     loadComponent: () => import("./pages/home/home.component").then((m) => m.HomeComponent),
   },
   {
-    path: "comparador/:id",
+    path: "comparador/:ids",
     loadComponent: () => import("./pages/comparador/comparador.component").then((m) => m.ComparadorComponent),
   },
   {

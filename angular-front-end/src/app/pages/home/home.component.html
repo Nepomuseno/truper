@@ -1,6 +1,10 @@
 <div id="home" class="container">
 
-    <app-search-bar (searchTerm)="searchPokemon($event)"></app-search-bar>
+    <div class="top-dashboard">
+        <button matButton [routerLink]="['/comparador', idComparables().join('-')]"
+            [disabled]="!isComparable()">Comparar</button>
+        <app-search-bar (searchTerm)="searchPokemon($event)"></app-search-bar>
+    </div>
 
     @if (loading()) {
     <div class="spinner">
@@ -13,7 +17,8 @@
             @if (current.length > 0) {
             @for (pokemon of current; track pokemon.id) {
             <div class="col-12 col-sm-6 col-md-4 col-lg-3">
-                <app-pokemon-card [pokemon]="pokemon"></app-pokemon-card>
+                <app-pokemon-card [pokemon]="pokemon" [idComparables]="idComparables()"
+                    (click)="handleComparables(pokemon.id)"></app-pokemon-card>
             </div>
             }
             } @else {

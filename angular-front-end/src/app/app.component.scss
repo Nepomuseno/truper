@@ -1,0 +1,22 @@
+.main {
+    display: flex;
+    flex-direction: column;
+}
+
+/* Header fijo arriba */
+app-header {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    z-index: 1000;
+    background-color: white; // asegúrate de tener fondo para cubrir contenido detrás
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+}
+
+/* El contenido debajo del header */
+router-outlet {
+    display: block;
+    margin-top: 50px; // ajusta este valor según la altura de tu header
+    padding: 1rem;
+}

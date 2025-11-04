@@ -1,21 +1,31 @@
-.spinner {
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    margin: 20em auto;
-    width: 40px;
-}
+.container {
+    text-align: center;
 
-.not-found {
-    margin: auto;
+    .top-dashboard {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+    }
 
-    h5 {
-        margin-top: 20px;
-        font-size: 20px;
-        text-align: center;
+    .spinner {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        margin: 20em auto;
+        width: 40px;
+    }
 
-        span {
-            font-weight: 700;
+    .not-found {
+        margin: auto;
+
+        h5 {
+            margin-top: 20px;
+            font-size: 20px;
+            text-align: center;
+
+            span {
+                font-weight: 700;
+            }
         }
     }
 }

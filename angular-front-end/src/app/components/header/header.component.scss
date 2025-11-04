@@ -5,8 +5,14 @@
     align-items: center;
     justify-content: space-between;
 
-    h1 {
-        color: #fff;
-        margin: 0;
+    .container {
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+
+        h1 {
+            color: #fff;
+            margin: 0;
+        }
     }
 }
